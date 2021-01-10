@@ -1,0 +1,15 @@
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>
+ 
+# Rewrite url
+RewriteEngine on
+
+RewriteRule ^([0-9]+)$ index.php?id=$1
+RewriteRule ^([0-9]+)/$ index.php?id=$1
+
+
+
+
+
