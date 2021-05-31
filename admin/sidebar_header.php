@@ -55,13 +55,13 @@
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="triangle" width="20"></i> 
-                                <span>Trả lời bình luận</span>
+                                <span>Quản lí bình luận</span>
                             </a>
                             
                             <ul class="submenu ">
                                 
                                 <li>
-                                    <a href="repCmt.php">Trả lời bình luận</a>
+                                    <a href="repCmt.php">Quản lí bình luận</a>
                                 </li>
                                 
                             </ul>

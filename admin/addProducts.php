@@ -25,14 +25,14 @@ require 'config-cloud.php';
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/app.css">
-    <link rel="shortcut icon" href="<?php echo $base;?>assets/images/favicon.svg" type="image/x-icon">
+   
 </head>
 <body>
 <div id="app">
     <div id="sidebar" class='active'>
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
-                <img src="<?php echo $base;?>assets/images/logo.svg" alt="" srcset="">
+                <img src="<?php echo $base;?>assets/images/lg.png" alt="" srcset="">
             </div>
             <?php include'sidebar_header.php' ?>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

@@ -20,7 +20,7 @@ $ss->StartSession();
     <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/chartjs/Chart.min.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/app.css">
-    <link rel="shortcut icon" href="<?php echo $base;?>assets/images/favicon.svg" type="image/x-icon">
+   
     <style>
         #cateFather{
             display: none;
@@ -32,7 +32,7 @@ $ss->StartSession();
     <div id="sidebar" class='active'>
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
-                <img src="<?php echo $base;?>assets/images/logo.svg" alt="" srcset="">
+                <img src="<?php echo $base;?>assets/images/lg.png" alt="" srcset="">
             </div>
             <?php include'sidebar_header.php' ?>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -60,6 +60,7 @@ $ss->StartSession();
                             <th>Trả lời</th>
                             <th>Trạng thái</th>
                             <th>Chức năng</th>
+                            <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,6 +110,9 @@ $ss->StartSession();
                                 <td>
                                 <a href="reply.php?id_cmt=<?php echo $c['id_cmt']?>" name="edit" class="btn icon btn-sm round"><i class="fas fa-reply"></i></a>
                                 </td>
+                                <td>
+                                <a href="delCmt.php?id_cmt=<?php echo $c['id_cmt']?>" name="del" class="btn icon btn-sm round"><i class="fas fa-trash"></i></a>
+                                </td>
                             </tr>    
                             <?php endforeach ?>
                             <?php endforeach ?>
@@ -156,6 +160,9 @@ $ss->StartSession();
                                 </td>
                                 <td>
                                 <a href="reply.php?id_cmt=<?php echo $c['id_cmt']?>" name="edit" class="btn icon btn-sm round"><i class="fas fa-reply"></i></a>
+                                </td>
+                                <td>
+                                <a href="delCmt.php?id_cmt=<?php echo $c['id_cmt']?>" name="del" class="btn icon btn-sm round"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>    
                             <?php endforeach ?>

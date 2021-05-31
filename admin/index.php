@@ -25,7 +25,7 @@ if ($role['role']==0) {
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/app.css">
-    <link rel="shortcut icon" href="<?php echo $base;?>assets/images/favicon.svg" type="image/x-icon">
+   
 </head>
 <style type="text/css">
 .chart {
@@ -51,66 +51,63 @@ if ($role['role']==0) {
                     
                 </div>
                 <section class="section">
-<div class="container">
-    <div class="chart">
-                    <div id="chart-container">
-                        <canvas id="graphCanvas"></canvas>
-                    </div>
+                    <div class="container">
+                        <div class="chart">
+                            <div id="chart-container">
+                                <canvas id="graphCanvas"></canvas>
+                            </div>
 
-                    <script>
-                        $(document).ready(function () {
-                            showGraph();
-                        });
-
-
-                        function showGraph()
-                        {
-                            {
-                                $.post("data.php",
-                                function (data)
-                                {
-                                    console.log(data);
-                                    var date = [];
-                                    var money = [];
-
-                                    for (var i in data) {
-                                        date.push(data[i].saledate);
-                                        money.push(data[i].sumtt);
-                                    }
-
-                                    var chartdata = {
-                                        labels: date,
-                                        datasets: [
-                                            {
-                                                label: 'Doanh thu(VNĐ)',
-                                                backgroundColor: '#F5DF4D',
-                                                borderColor: '#46d5f1',
-                                                hoverBackgroundColor: '#CCCCCC',
-                                                hoverBorderColor: '#666666',
-                                                data: money
-                                            }
-                                        ]
-                                    };
-
-                                    var graphTarget = $("#graphCanvas");
-
-                                    var barGraph = new Chart(graphTarget, {
-                                        type: 'bar',
-                                        data: chartdata
-                                    });
+                            <script>
+                                $(document).ready(function () {
+                                    showGraph();
                                 });
-                            }
-                        }
-                        </script>
 
-                </div>
-</div>
-                
+
+                                function showGraph()
+                                {
+                                    {
+                                        $.post("data.php",
+                                        function (data)
+                                        {
+                                            console.log(data);
+                                            var date = [];
+                                            var money = [];
+
+                                            for (var i in data) {
+                                                date.push(data[i].saledate);
+                                                money.push(data[i].sumtt);
+                                            }
+
+                                            var chartdata = {
+                                                labels: date,
+                                                datasets: [
+                                                    {
+                                                        label: 'Doanh thu(VNĐ)',
+                                                        backgroundColor: '#F5DF4D',
+                                                        borderColor: '#46d5f1',
+                                                        hoverBackgroundColor: '#CCCCCC',
+                                                        hoverBorderColor: '#666666',
+                                                        data: money
+                                                    }
+                                                ]
+                                            };
+
+                                            var graphTarget = $("#graphCanvas");
+
+                                            var barGraph = new Chart(graphTarget, {
+                                                type: 'bar',
+                                                data: chartdata
+                                            });
+                                        });
+                                    }
+                                }
+                                </script>
+
+                        </div>
+                    </div>
                 </section>
             </div>
-            <footer>
-             
-            </footer>
+            
         </div>
 </div>
     <script src="<?php echo $base;?>assets/js/feather-icons/feather.min.js"></script>

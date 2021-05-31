@@ -17,8 +17,9 @@ $ss->StartSession();
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/simple-datatables/style.css" />
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="<?php echo $base;?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo $base;?>assets/css/app.css">
-    <link rel="shortcut icon" href="<?php echo $base;?>assets/images/favicon.svg" type="image/x-icon">
     <style>
         #cateFather{
             display: none;
@@ -30,7 +31,7 @@ $ss->StartSession();
     <div id="sidebar" class='active'>
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
-                <img src="<?php echo $base;?>assets/images/logo.svg" alt="" srcset="">
+                <img src="<?php echo $base;?>assets/images/lg.png" alt="" srcset="">
             </div>
             <?php include'sidebar_header.php' ?>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -47,6 +48,22 @@ $ss->StartSession();
         <div class="card">
             <div class="card-header">
                Danh sách đơn hàng
+               <br>
+               <?php
+               if($_SESSION['role']!=1){
+                    foreach($db->getData("SELECT id_prd from products where id_user = ".$_SESSION['id_user']."") as $key => $v){
+                        foreach($db->getData("SELECT id_bill from bill_details where id_prd = ".$v['id_prd']."") as $key => $v){
+                            $idb[] = $v['id_bill'];
+                        }    
+                    }
+                    $str = implode(",",$idb);	
+                    $tongdon = $db->getRow("SELECT COUNT(id_bill) AS tong FROM bills where id_bill in (".$str.")");
+                    echo "Tổng số đơn hàng: ".$tongdon['tong'];
+                }else{
+                    $tongdon = $db->getRow("SELECT COUNT(id_bill) AS tong FROM bills");
+                    echo "Tổng số đơn hàng: ".$tongdon['tong'];
+                }
+                ?>
             </div>
             <div class="card-body table-responsive">
                 <table class='table table-striped' id="table1">
@@ -245,7 +262,7 @@ $ss->StartSession();
             </div>
         </div>
 </div>
-   
+    <script src="<?php echo $base;?>assets/js/feather-icons/feather.min.js"></script>
     <script src="<?php echo $base;?>assets/js/app.js"></script>
     <script src="<?php echo $base;?>assets/js/pages/dashboard.js"></script>
     <script src="<?php echo $base;?>assets/vendors/simple-datatables/simple-datatables.js"></script>
