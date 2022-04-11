@@ -96,8 +96,8 @@
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
 <!-- /////////////////// -->
-<input type="hidden"id="id_user" value="<?php echo $_SESSION['id_user']?>">
-<input type="hidden"id="username" value="<?php echo $_SESSION['username']?>">
+<input type="hidden"id="id_user" value="<?php if (isset($_SESSION['id_user'])) echo $_SESSION['id_user']?>">
+<input type="hidden"id="username" value="<?php if (isset($_SESSION['username'])) echo $_SESSION['username']?>">
 <input type="hidden"id="id_prd" value="<?php echo $prd['id_prd']?>">
 <script>
     $(document).ready(function(){

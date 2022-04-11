@@ -98,7 +98,7 @@ $role = $db->getRow("SELECT `role` from accounts where id_user = ".$_SESSION['id
             </form>
         </div>
 </div>
-<input type="hidden"  id="iduser" value="<?php echo $_SESSION['id_user']?>">
+<input type="hidden"  id="iduser" value="<?php if (isset($_SESSION['id_user'])) echo $_SESSION['id_user'] ?>">
 <script>
     $(document).ready(function(){
         $("#updateRole").click(function(){
