@@ -101,7 +101,9 @@
 <input type="hidden"id="id_prd" value="<?php echo $prd['id_prd']?>">
 <script>
     $(document).ready(function(){
+        
         $("#sendcm").click(function(){
+            if($("#comment").val()!==''){
             var idprd = $('#id_prd').val();
             var txt = $("#comment").val();
             var iduser = $('#id_user').val();
@@ -128,6 +130,7 @@
             var d = new Date();
             var n = month[d.getMonth()];
             $.post("addcomment.php", {noidung: txt, idprd: idprd, iduser: iduser, vote: vote}, function(result){
+              $("#comment").val('');
               $("#comments").append(
                 
                 '<div class="blog__comment__item"><div class="blog__comment__item__pic"><img src="img/blog/details/comment.jfif" width="90px" height="90px" alt=""></div><div class="blog__comment__item__text"><h6>'+usname+'</h6><p>'+txt+'</p>'+star+'<ul><li><i class="fa fa-clock-o"></i>'+n+' '+d.getDate()+', '+d.getFullYear()+', '+d.toLocaleTimeString()+'</li></ul></div></div>'
@@ -135,6 +138,9 @@
                 // '<div class="row"><div class="col-lg-1"><label style="font-size: 18px;"><span style="font-size: 17px;">'+usname+'</span></label></div><div class="col-lg-11"><span style="font-size: 17px;">'+txt+'</span><hr></div>'
               );  
             })
+        }else{
+            alert("Hãy nhập nội dung bình luận!!!");
+        }
         })
     })
 </script>  

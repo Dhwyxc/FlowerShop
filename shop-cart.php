@@ -93,7 +93,7 @@ if($ok == 2)
                                     unset($_SESSION['cart'][$k]);
                                    
                                 }
-                                else if(($value > 0) && (is_numeric($value)) && $value < $v['amount_prd'])
+                                else if(($value > 0) && (is_numeric($value)) && $value <= $v['amount_prd'])
                                 {
                                     $_SESSION['cart'][$k]=$value;
                                 }
@@ -195,7 +195,7 @@ if($ok == 2)
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="checkout__form__input">
                                     <p>Họ & Tên <span>*</span></p>
-                                    <input type="text" id="fullname">
+                                    <input type="text" id="fullname" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -203,13 +203,13 @@ if($ok == 2)
                                     <div class="row">
                                         <div class="col-lg-6">
                                         <p>Tỉnh/Thành phố <span>*</span></p>
-                                            <select name="calc_shipping_provinces" required="" style="height: 50px; font-size: 14px; width: 100%;border-radius: 3px; border: 1px solid #e1e1e1; padding-left: 20px;">
+                                            <select name="calc_shipping_provinces" required style="height: 50px; font-size: 14px; width: 100%;border-radius: 3px; border: 1px solid #e1e1e1; padding-left: 20px;">
                                             <option value="">Tỉnh/Thành phố</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6">
                                         <p>Quận/Huyện<span>*</span></p>
-                                        <select name="calc_shipping_district" required="" style="height: 50px; font-size: 14px; width: 100%;border-radius: 3px; border: 1px solid #e1e1e1; padding-left: 20px;">
+                                        <select name="calc_shipping_district" required style="height: 50px; font-size: 14px; width: 100%;border-radius: 3px; border: 1px solid #e1e1e1; padding-left: 20px;">
                                         <option value="">Quận/Huyện</option>
                                         </select>
                                         </div>
@@ -220,19 +220,19 @@ if($ok == 2)
                                 <br>
                                 <div class="checkout__form__input">
                                     <p>Địa chỉ <span>*</span></p>
-                                    <input type="text" placeholder="Toàn Nhà, Tên Đường..." id="addressa">
+                                    <input type="text" placeholder="Toàn Nhà, Tên Đường..." id="addressa" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Số điện thoại <span>*</span></p>
-                                    <input type="text" id="phonenum">
+                                    <input type="num" id="phonenum" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Email <span>*</span></p>
-                                    <input type="text" id="email">
+                                    <input type="text" id="email" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -291,7 +291,10 @@ if($ok == 2)
 <input type="hidden" id="id_user" value="<?php echo $_SESSION['id_user']?>">
 <script>
 $("#payment").click(function(){
-    $arrid=[];
+    if($('#fullname').val()==''||$('#phonenum').val()==''||$('#email').val()==''||$('#addressa').val()==''){
+        alert('Vui lòng nhập đầy đủ thông tin!!!');
+    }else{
+        $arrid=[];
     $('.all_id').each(function(key, value ){
         $arrid.push(value.value);
     })
@@ -303,9 +306,11 @@ $("#payment").click(function(){
     $price_total = $('#price_total').val();
     $notes = $('#notes').val();
     $.post("payment.php", {arrid: $arrid, name: $name, phone : $phone, add: $add, email: $email, iduser : $iduser, notes : $notes, price_total:$price_total}, function(result){
-        location.assign('shop-cart.php');
+        location.assign('account.php');
      
     })
+    }
+    
         })
 </script>
 <script src="<?php echo $base?>js/jquery-3.3.1.min.js"></script>

@@ -80,9 +80,13 @@ if(isset($_GET['search-value']))
                                 <?php } ?>    
                                     <ul class="product__hover">
                                         <li><a href="<?php echo $v['image_prd']?>" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                       <?php if(isset($_SESSION['username'])){?>
+                                       <?php
+                                       $row = $db->getRow('SELECT amount_prd from products where id_prd = '.$v['id_prd'].'');
+                                       if(isset($_SESSION['username'])){
+                                           if($row['amount_prd']>0){?>
                                         <li><a href="addcart.php?item=<?php echo($v['id_prd']) ?>"><span class="icon_bag_alt"></span></a></li>
-                                        <?php }else{?>
+                                        <?php }}
+                                        else{?>
                                             <li><a href="Login.php" class="cart-btn"><span class="icon_bag_alt"></span></a></li>
                                         <?php }?>
                                     </ul>

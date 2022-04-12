@@ -74,11 +74,11 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-6 col-xs-6 mb-3 mt-2">
                                     <span style="color: black; font-weight: 600; margin-left: 5px; font-size: 18px;">TỪ</span>
-                                    <br><input type="text" name="min" id="min" style="width: 100%; height: 30px; border: 2px solid black;" >
+                                    <br><input type="number" name="min" id="min" style="width: 100%; height: 30px; border: 2px solid black;" >
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-6 col-xs-6 mb-3 mt-2">
                                     <span style="color: black; font-weight: 600; margin-left: 5px; font-size: 18px;">ĐẾN</span>
-                                    <br><input type="text" name="max" id="max" style="width: 100%; height: 30px; border: 2px solid black;" >
+                                    <br><input type="number" name="max" id="max" style="width: 100%; height: 30px; border: 2px solid black;" >
                                     </div>
                                 </div>
                                 <div class="row">

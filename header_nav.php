@@ -94,7 +94,7 @@ $role = $db->getRow("SELECT `role` from accounts where id_user = ".$_SESSION['id
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
             <form class="search-model-form" method="GET">
-                <input type="text" id="search-input" placeholder="Tìm kiếm..." name="search-value">
+                <input type="search" id="search-input" placeholder="Tìm kiếm..." name="search-value">
             </form>
         </div>
 </div>
