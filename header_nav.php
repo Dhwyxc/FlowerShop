@@ -38,7 +38,7 @@ $role = $db->getRow("SELECT `role` from accounts where id_user = ".$_SESSION['id
             <div class="row">
                 <div class="col-xl-9 col-lg-8">
                     <div class="header__logo">
-                        <a href="<?php echo $base?>index.php"><img src="<?php echo $base?>img/lg.png" width="30%" height="50px" alt=""></a>
+                        <a href="<?php echo $base?>index.php"><img src="<?php echo $base?>img/lg.png" width="100%" height="50px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-3">                
