@@ -28,6 +28,7 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
         <?php
         $Susername=$Spassword="";
         $usernameErr=$passwordErr="";
+        $check=0;
         if (isset($_POST['signup'])) {
             if (empty($_POST["username-column"])) {
                 $usernameErr = "Tài khoản không được để trống";
@@ -39,15 +40,18 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
               }
               if (empty($_POST["password-column"])) {
                 $passwordErr = "Mật khẩu không được để trống";
-              } else {
-                $Spassword = $_POST["password-column"];
+              } elseif($_POST["password-column"] != $_POST["cPassword-column"]){
+                    $passwordErr = "Vui lòng xác nhận đúng mật khẩu!";
+                    $check = 1;
+                }else{
+                     $Spassword = $_POST["cPassword-column"];
                 }
                 if($db->numrow("SELECT * from accounts where username='".$Susername."'"))
                 {
                     $usernameErr = "Tài khoản đã tồn tại";
                 }else
                 {
-                  if(preg_match("/^[A-Za-z0-9_.]+$/",$Susername)&&!empty($_POST["password-column"])){
+                  if(preg_match("/^[A-Za-z0-9_.]+$/",$Susername)&&!empty($_POST["cPassword-column"])&&($check!=1)){
                     $fullname= $_POST["fname-column"]." ".$_POST["lname-column"];
                     $sql="INSERT into accounts values ('','".$Susername."','".md5($Spassword)."','".$_POST["address-column"]."','".$_POST["phonenum-column"]."','".$fullname."','','')";
                     $db->statement($sql);
@@ -71,34 +75,41 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="first-name-column">First Name</label>
-                                    <input type="text" id="first-name-column" class="form-control"  name="fname-column">
+                                    <label for="first-name-column">First Name <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="text" id="first-name-column" class="form-control"  name="fname-column" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="last-name-column">Last Name</label>
-                                    <input type="text" id="last-name-column" class="form-control"  name="lname-column">
+                                    <label for="last-name-column">Last Name <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="text" id="last-name-column" class="form-control"  name="lname-column" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="username-column">Username</label>
-                                    <input type="text" id="username-column" class="form-control" name="username-column">
+                                    <label for="username-column">Username <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="text" id="username-column" class="form-control" name="username-column" required>
                                     <label style="color: red;"><?php echo $usernameErr?></label>
                                 </div>
                             </div>
+                             <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="phonenum-column">Phone Number <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="text" id="phonenum-column" class="form-control" name="phonenum-column" required>
+                                </div>
+                            </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="password-column">Password</label>
-                                    <input type="password" id="password-column" class="form-control" name="password-column">
+                                    <label for="password-column">Password <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="password" id="password-column" class="form-control" name="password-column" required>
                                     <label style="color: red;"><?php echo $passwordErr?></label>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="phonenum-column">Phone Number</label>
-                                    <input type="text" id="phonenum-column" class="form-control" name="phonenum-column">
+                                    <label for="cPassword-column">Confirm Password <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
+                                    <input type="password" id="cPassword-column" class="form-control" name="cPassword-column" required>
+                                    <label style="color: red;"><?php echo $passwordErr?></label>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
