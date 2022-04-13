@@ -112,7 +112,7 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
                                     <label style="color: red;"><?php echo $passwordErr?></label>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-12 col-12">
                                 <div class="form-group">
                                     <label for="address-column">Address</label>
                                     <input type="address" id="address-column" class="form-control" name="address-column">
