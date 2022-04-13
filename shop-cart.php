@@ -6,6 +6,9 @@ $ss = new session();
 $ss->StartSession();
 $httpProtocol = !isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on' ? 'http' : 'https';
 $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
+if (!isset($_SESSION['username'])) {
+	header('Location:'.$base.'Login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -89,7 +92,7 @@ if($ok == 2)
                             {
                                 if(($value == 0) && (is_numeric($value)))
                                 {   
-                                    @header("Location:shop-cart.php");
+                                    @header('Location:'.$base.'shop-cart.php');
                                     unset($_SESSION['cart'][$k]);
                                    
                                 }
@@ -98,7 +101,7 @@ if($ok == 2)
                                     $_SESSION['cart'][$k]=$value;
                                 }
                             }
-                        @header("Location:shop-cart.php");
+                            @header('Location:'.$base.'shop-cart.php');
                     }
                     ?>
            <?php endforeach ?>
@@ -292,7 +295,7 @@ if($ok == 2)
 <script>
 $("#payment").click(function(){
     if($('#fullname').val()==''||$('#phonenum').val()==''||$('#email').val()==''||$('#addressa').val()==''){
-        alert('Vui lòng nhập đầy đủ thông tin!!!');
+        // alert('Vui lòng nhập đầy đủ thông tin!!!');
     }else{
         $arrid=[];
     $('.all_id').each(function(key, value ){

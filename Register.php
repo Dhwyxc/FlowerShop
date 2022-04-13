@@ -95,7 +95,7 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST']."/".'FlowerShop/';
                              <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="phonenum-column">Phone Number <span style="color:red; font-weight: bold; font-size: large;">*</span></label>
-                                    <input type="text" id="phonenum-column" class="form-control" name="phonenum-column" required>
+                                    <input type="number" id="phonenum-column" class="form-control" name="phonenum-column" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">

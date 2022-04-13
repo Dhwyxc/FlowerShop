@@ -65,7 +65,7 @@ if (isset($_POST['signin'])) {
                     <div class="text-center mb-5">
                         <img src="assets/images/lg.png"  width="60%" class='mb-4'>
                         <h3>Sign In</h3>
-                        <p>Please sign in to continue to Voler.</p>
+                        <p>Please sign in to continue to FlowerShop.</p>
                     </div>
                     <form action="" method="POST">
                         <div class="form-group position-relative has-icon-left">
