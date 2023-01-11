@@ -40,6 +40,7 @@ if (isset($_POST['signin'])) {
         $password = $_POST["password"];
         }
         if($db->numrow("SELECT * from accounts where username='".$username."' and password='".md5($password)."'")){
+        // if($db->getRow("SELECT count(*) from accounts where username='".$username."' and password='".md5($password)."'")){
             $data = $db->getRow("SELECT * from accounts where username='".$username."'");
           $ss->save($data['username']);
           $ss->saveID($data['id_user']);
